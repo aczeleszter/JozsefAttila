@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>József Attila Kvíz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>József Attila Kvíz</h1>
+    <form id="quizForm">
+        <div>
+            <p>Mire keresztelték át nevelőszülei Öcsödön?</p>
+            <input type="radio" id="answer1" name="jozsef_attila" value="Endre">
+            <label for="answer1">a) Endre</label><br>
+            <input type="radio" id="answer2" name="jozsef_attila" value="János">
+            <label for="answer2">b) János</label><br>
+            <input type="radio" id="answer3" name="jozsef_attila" value="Lajos">
+            <label for="answer3">c) Lajos</label><br>
+            <input type="radio" id="answer4" name="jozsef_attila" value="István">
+            <label for="answer4">d) István</label>
+        </div>
+        <button type="submit">Beküld</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const answer = document.querySelector('input[name="jozsef_attila"]:checked').value;
+            const resultDiv = document.getElementById("result");
+            const correctAnswer = "István";
+
+            if (answer === correctAnswer) {
+                resultDiv.innerHTML = `<span class="correct">Helyes válasz: ${answer}</span>`;
+            } else {
+                resultDiv.innerHTML = `<span class="incorrect">Helytelen válasz: ${answer}. A helyes válasz: <span class="correct">${correctAnswer}</span></span>`;
+            }
+        });
+    </script>
+</body>
+</html>
